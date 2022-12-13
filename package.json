@@ -1,0 +1,62 @@
+{
+	"name": "vscode-largefile-grep",
+	"displayName": "MemFS - a file system provider sample",
+	"description": "Showcase for the file system provider API, also useful for testing again document that are not on disk.",
+	"version": "0.0.3",
+	"publisher": "vscode-samples",
+	"private": true,
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dpull/vscode-largefile-grep"
+	},
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onFileSystem:memfs"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "memfs.WorkspaceInit",
+				"title": "Setup Workspace",
+				"category": "MemFS"
+			},
+			{
+				"command": "memfs.OpenFile",
+				"title": "OpenFile File",
+				"category": "MemFS"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "memfs.OpenFile"
+				},
+				{
+					"command": "memfs.WorkspaceInit",
+					"when": "workbenchState != workspace"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^4.8.4"
+	}
+}
